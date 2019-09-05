@@ -9,7 +9,7 @@ const dotenv = require('dotenv').config();
 
 const mobilesRoutes = require('./routes/mobiles');
 
-mongoose.connect(`mongodb+srv://ferrilata:BHzMaVnVi7s4Mu2n@cluster0-n6dsz.mongodb.net/ToucanGSM?retryWrites=true&w=majority`, {useNewUrlParser: true})
+mongoose.connect(`mongodb+srv://ferrilata:${process.env.MONGO_PASS}@cluster0-n6dsz.mongodb.net/ToucanGSM?retryWrites=true&w=majority`, {useNewUrlParser: true})
   .then(() => {
     console.log('Connection established to DB');
   })

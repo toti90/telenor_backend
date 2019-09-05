@@ -55,8 +55,4 @@ router.get('/:key', (req, res) => {
     });
   }
 });
-
-
-
-
 module.exports = router;
