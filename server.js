@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 
 const exampleRoutes = require('./routes/example');
+const detailsRoutes = require('./routes/details');
 
 // mongoose.connect(`mongodb+srv://ferrilata:${process.env.MONGO_PASS}@ferrilata-jade-reddit-lrtmg.mongodb.net/FedExDB?retryWrites=true&w=majority`, {useNewUrlParser: true})
 //   .then(() => {
@@ -39,5 +40,6 @@ app.use(express.json());
 app.use('/example', exampleRoutes);
 
 app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/details', detailsRoutes);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
