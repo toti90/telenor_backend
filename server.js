@@ -7,18 +7,18 @@ const port = 3000;
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 
-const exampleRoutes = require('./routes/example');
+const mobilesRoutes = require('./routes/mobiles');
 
-// mongoose.connect(`mongodb+srv://ferrilata:${process.env.MONGO_PASS}@ferrilata-jade-reddit-lrtmg.mongodb.net/FedExDB?retryWrites=true&w=majority`, {useNewUrlParser: true})
-//   .then(() => {
-//     console.log('Connection established to DB');
-//   })
-//   .catch(() => {
-//     console.log('Connection failed!');
-//   });
+mongoose.connect(`mongodb+srv://ferrilata:${process.env.MONGO_PASS}@cluster0-n6dsz.mongodb.net/ToucanGSM?retryWrites=true&w=majority`, {useNewUrlParser: true})
+  .then(() => {
+    console.log('Connection established to DB');
+  })
+  .catch(() => {
+    console.log('Connection failed!');
+  });
 
-// mongoose.set('useFindAndModify', false);
-// mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 // ROUTES
-app.use('/example', exampleRoutes);
+app.use('/shop', mobilesRoutes);
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
