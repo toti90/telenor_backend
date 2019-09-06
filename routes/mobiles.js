@@ -55,4 +55,33 @@ router.get('/:key', (req, res) => {
     });
   }
 });
+
+router.get('/:keys', (req, res) => {
+
+  if (req.headers['content-type'] && req.headers['content-type'].includes('application/json')) {
+    if (req.params.key !== 'undefined') {
+      let arrayOfKeys = req.params.key;
+      console.log(arrayOfKeys);
+      
+      Details.find({key : {$in:arrayOfKeys}})
+      .then(mobiles => {
+        res.status(200).json(mobiles);
+      })
+      .catch(error => {
+        res.status(500).json({
+          message: 'Something went wrong, please try again later.'
+        });
+      });
+    } else {
+      res.status(500).json({
+        message: 'Something went wrong, please try again later.'
+      });
+    }
+
+  } else {
+    res.status(415).json({
+      message: 'Bad request header settings.'
+    });
+  }
+});
 module.exports = router;
