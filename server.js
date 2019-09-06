@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 
 const mobilesRoutes = require('./routes/mobiles');
+const cartMobilesRoutes = require('./routes/cart-mobiles');
 
 mongoose.connect(`mongodb+srv://ferrilata:${process.env.MONGO_PASS}@cluster0-n6dsz.mongodb.net/ToucanGSM?retryWrites=true&w=majority`, {useNewUrlParser: true})
   .then(() => {
@@ -37,6 +38,7 @@ app.use(express.json());
 
 // ROUTES
 app.use('/shop', mobilesRoutes);
+app.use('/cart', cartMobilesRoutes);
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
