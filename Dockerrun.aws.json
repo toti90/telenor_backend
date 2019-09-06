@@ -1,0 +1,11 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image":{
+    "Name": "aubera/telenor-web-app"
+  },
+    "Ports": [       {
+      "ContainerPort": "8080",
+      "hostPort": "8080"
+    }     
+  ]
+}
